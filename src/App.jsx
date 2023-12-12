@@ -3,10 +3,11 @@ import './App.css'
 import { useEffect ,useState} from "react"
 
 function App() {
-  const[data,setData]=useState()
+  const[data,setData]=useState([])
   useEffect(()=>{
     axios.get("https://reactnd-books-api.udacity.com/books",{ headers: { 'Authorization': 'whatever-you-want' }})
     .then(response=>{
+      console.log(response);
       setData(response.data.books)
     }).catch(error=>{
       if(error.response.status==404){
